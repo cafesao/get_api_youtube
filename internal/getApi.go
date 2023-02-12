@@ -3,14 +3,14 @@ package getYoutube
 import (
 	"encoding/json"
 	"fmt"
-	Struct "getYoutube/Struct"
+	Struct "getYoutube/structs"
 	"io"
 	"log"
 	"net/http"
 	"os"
 )
 
-func GetApi(id string) Struct.SApiYoutube {
+func GetApi(id string) Struct.ApiYoutube {
 	url := fmt.Sprintf("https://www.googleapis.com/youtube/v3/videos?id=%v&key=%v&part=snippet,statistics,contentDetails&fields=items(snippet(title,channelTitle),statistics,contentDetails(duration))", id, GetEnv("API_KEY"))
 
 	response, err := http.Get(url)
@@ -24,7 +24,7 @@ func GetApi(id string) Struct.SApiYoutube {
 		log.Fatal(err)
 	}
 
-	var responseObject Struct.SApiYoutube
+	var responseObject Struct.ApiYoutube
 
 	json.Unmarshal(responseData, &responseObject)
 

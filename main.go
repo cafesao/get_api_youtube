@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	Internal "getYoutube/Internal"
+	Internal "getYoutube/internal"
 )
 
 func main() {

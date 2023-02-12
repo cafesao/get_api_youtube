@@ -6,7 +6,7 @@ import (
 	"github.com/senseyeio/duration"
 )
 
-type SApiYoutube struct {
+type ApiYoutube struct {
 	Items []struct {
 		Snippet struct {
 			Title        string `json:"title"`
@@ -24,31 +24,31 @@ type SApiYoutube struct {
 	} `json:"items"`
 }
 
-func (a *SApiYoutube) GetTitle() string {
+func (a *ApiYoutube) GetTitle() string {
 	return fmt.Sprintf("\nTitle: %v", a.Items[0].Snippet.Title)
 }
 
-func (a *SApiYoutube) GetChannel() string {
+func (a *ApiYoutube) GetChannel() string {
 	return fmt.Sprintf("\nChannel: %v", a.Items[0].Snippet.ChannelTitle)
 }
 
-func (a *SApiYoutube) GetDuration() string {
+func (a *ApiYoutube) GetDuration() string {
 	duration, _ := duration.ParseISO8601(a.Items[0].ContentDetails.Duration)
 	return fmt.Sprintf("\nDuration: %v hours, %v minutes and %v seconds \n", duration.TH, duration.TM, duration.TS)
 }
 
-func (a *SApiYoutube) GetViews() string {
+func (a *ApiYoutube) GetViews() string {
 	return fmt.Sprintf("\nViews: %v", a.Items[0].Statistics.ViewCount)
 }
 
-func (a *SApiYoutube) GetLikes() string {
+func (a *ApiYoutube) GetLikes() string {
 	return fmt.Sprintf("\nLikes: %v", a.Items[0].Statistics.LikeCount)
 }
 
-func (a *SApiYoutube) GetFavorites() string {
+func (a *ApiYoutube) GetFavorites() string {
 	return fmt.Sprintf("\nFavorites: %v", a.Items[0].Statistics.FavoriteCount)
 }
 
-func (a *SApiYoutube) GetComments() string {
+func (a *ApiYoutube) GetComments() string {
 	return fmt.Sprintf("\nComments: %v", a.Items[0].Statistics.CommentCount)
 }
